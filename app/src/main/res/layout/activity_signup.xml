@@ -6,4 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".Signup">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<EditText
+android:id="@+id/UserName"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="90dp"
+android:layout_marginTop="30dp"
+android:ems="10"
+android:inputType="textPersonName"
+android:text="Username"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
+
+<EditText
+android:id="@+id/Email"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="90dp"
+android:layout_marginTop="30dp"
+android:ems="10"
+android:inputType="textPersonName"
+android:text="Email"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/ConfirmPassword" />
+
+<EditText
+android:id="@+id/Phone"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="90dp"
+android:layout_marginTop="30dp"
+android:ems="10"
+android:inputType="phone"
+android:text="Phone"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+<EditText
+android:id="@+id/Password"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="90dp"
+android:layout_marginTop="30dp"
+android:ems="10"
+android:inputType="textPersonName"
+android:text="Password"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/UserName" />
+
+<EditText
+android:id="@+id/ConfirmPassword"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="90dp"
+android:layout_marginTop="30dp"
+android:ems="10"
+android:inputType="textPersonName"
+android:text="Confirm Password"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+<Button
+android:id="@+id/button"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="130dp"
+android:layout_marginTop="30dp"
+android:text="Sign Me Up!"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/Phone" />
