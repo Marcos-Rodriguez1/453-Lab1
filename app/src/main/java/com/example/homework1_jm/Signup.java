@@ -37,10 +37,35 @@ public class Signup extends AppCompatActivity {
                 String Pass=PasswordID.getText().toString();
                 String Cpass=CPasswordID.getText().toString();
                 String Email=EmailID.getText().toString();
+                String Phone=PhoneID.getText().toString();
+                boolean correct;
+                correct=true;
+
 
                 if(!emailchecker(Email))
                 {
                   Toast.makeText(getApplicationContext(),"email incorrect", Toast.LENGTH_SHORT).show();
+                  correct=false;
+                }
+                if(!phoneChecker(Phone))
+                {
+                    Toast.makeText(getApplicationContext(),"phone is incorrect",Toast.LENGTH_SHORT).show();
+                    correct=false;
+                }
+                if(!Pass.equals(Cpass))
+                {
+                    Toast.makeText(getApplicationContext(),"Passwords dont match",Toast.LENGTH_SHORT).show();
+                    correct=false;
+                }
+                if(Name.matches("")||Pass.matches("")||Cpass.matches("")||Email.matches("")||Phone.matches(""))
+                {
+                    Toast.makeText(getApplicationContext(),"fill out all fields",Toast.LENGTH_SHORT).show();
+                    correct=false;
+                }
+
+                if(correct==true)
+                {
+                    opensignin();
                 }
 
 
@@ -59,5 +84,11 @@ public class Signup extends AppCompatActivity {
     boolean emailchecker(CharSequence Email)
     {
         return Patterns.EMAIL_ADDRESS.matcher(Email).matches();
+    }
+
+    boolean phoneChecker(CharSequence Phone)
+    {
+
+        return Patterns.PHONE.matcher(Phone).matches();
     }
 }
