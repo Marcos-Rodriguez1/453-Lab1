@@ -16,13 +16,14 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity {
     private Button signupButton;
-    Map<String,String> profile= new HashMap<>();
+    //Was just called Map before
+    HashMap<String,String> profile= new HashMap<>(); //Create the hashmap
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_signup); //Show the layout for it
 
 
 
@@ -75,6 +76,7 @@ public class Signup extends AppCompatActivity {
 
 
 
+
             }
         });
     }
@@ -83,11 +85,16 @@ public class Signup extends AppCompatActivity {
 
     public void opensignin(String Name,String Pass) //im pretty sure this is how you send the info in a hash table
     {
-        profile.put(Name,Pass);
-        Intent intent=new Intent(this,MainActivity.class);
-        intent.putExtra("send", (Serializable) profile);
-        startActivity(intent);
-
+        if(profile.containsKey(Name))
+        {
+            Toast.makeText(getApplicationContext(), "Username is already in database", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            profile.put(Name, Pass);
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("send", (Serializable) profile);
+            startActivity(intent);
+        }
     }
 
     boolean emailchecker(CharSequence Email)

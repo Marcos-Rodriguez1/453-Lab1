@@ -15,8 +15,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
 
-    private EditText username;
-    private EditText password;
+    private EditText username; //Added private buttons
+    private EditText password; //that will be placeholders
     private Button signUpBtn;
     private Button loginBtn;
 
@@ -24,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); //To show main activity layout
 
-        //Im pretty sure this is how you setup to recieve the hash tables
+        //Im pretty sure this is how you setup to receive the hash tables
         Intent intent=getIntent();
-        HashMap<String,String> hashMap=(HashMap<String,String>)intent.getSerializableExtra("send");
+        final HashMap<String,String> hashMap=(HashMap<String,String>)intent.getSerializableExtra("send");
 
 
 
-        username = findViewById(R.id.editText_UserName);
+        username = findViewById(R.id.editText_UserName); //Connect it to text fields
         password = findViewById(R.id.editText_Password);
         signUpBtn = findViewById(R.id.signUpBtn);
         loginBtn = findViewById(R.id.loginBtn);
@@ -46,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
                 opensignup();
 
             }
+        }); //even listener for button
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // loginUser(hashMap); //
+            }
         });
 
     }
@@ -55,5 +62,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Signup.class);
         startActivity(intent);
 
+    }
+
+    public void loginUser(HashMap<String, String> hashMap, String user, String pw)
+    {
+        String
     }
 }
