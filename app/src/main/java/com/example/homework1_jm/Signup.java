@@ -10,9 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Signup extends AppCompatActivity {
     private Button signupButton;
-   // HashMap<String,String> hashMap= new HashMap<String,String>();
+    Map<String,String> profile= new HashMap<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +70,7 @@ public class Signup extends AppCompatActivity {
 
                 if(correct==true)
                 {
-                    opensignin();
+                    opensignin(Name,Pass);
                 }
 
 
@@ -74,9 +79,13 @@ public class Signup extends AppCompatActivity {
         });
     }
 
-    public void opensignin()
+
+
+    public void opensignin(String Name,String Pass) //im pretty sure this is how you send the info in a hash table
     {
+        profile.put(Name,Pass);
         Intent intent=new Intent(this,MainActivity.class);
+        intent.putExtra("send", (Serializable) profile);
         startActivity(intent);
 
     }

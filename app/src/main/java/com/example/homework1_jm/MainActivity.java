@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +20,16 @@ public class MainActivity extends AppCompatActivity {
     private Button signUpBtn;
     private Button loginBtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Im pretty sure this is how you setup to recieve the hash tables
+        Intent intent=getIntent();
+        HashMap<String,String> hashMap=(HashMap<String,String>)intent.getSerializableExtra("send");
+
 
 
         username = findViewById(R.id.editText_UserName);
