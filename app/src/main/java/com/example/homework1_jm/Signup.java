@@ -23,15 +23,15 @@ public class Signup extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //adds profiles to hashmap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup); //Show the layout for it
         profile.put("John", "123");
         profile.put("James","456");
 
 
-
+       //sets values to everything
         signupButton=(Button)findViewById(R.id.signmeup);
-
         signupButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -51,20 +51,23 @@ public class Signup extends AppCompatActivity {
                 correct=true;
 
 
-
+        //checks if User meets all requirements
                 if(!emailchecker(Email))
                 {
                   Toast.makeText(getApplicationContext(),"email incorrect", Toast.LENGTH_SHORT).show();
+                  EmailID.setText(null);
                   correct=false;
                 }
                 if(!phoneChecker(Phone))
                 {
                     Toast.makeText(getApplicationContext(),"phone is incorrect",Toast.LENGTH_SHORT).show();
+                    PhoneID.setText(null);
                     correct=false;
                 }
                 if(!Pass.equals(Cpass))
                 {
                     Toast.makeText(getApplicationContext(),"Passwords dont match",Toast.LENGTH_SHORT).show();
+                    PasswordID.setText(null);
                     correct=false;
                 }
                 if(Name.matches("")||Pass.matches("")||Cpass.matches("")||Email.matches("")||Phone.matches(""))
@@ -86,8 +89,8 @@ public class Signup extends AppCompatActivity {
     }
 
 
-
-    public void opensignin(String Name,String Pass) //im pretty sure this is how you send the info in a hash table
+//this method makes sure teh name isnt already taken and passes the information to main activity if everything is correct
+    public void opensignin(String Name,String Pass)
     {
         if(profile.containsKey(Name))
         {
@@ -103,6 +106,8 @@ public class Signup extends AppCompatActivity {
         }
     }
 
+
+    //These two methods makes sure the email and phone are in the correct format using patterns.
     boolean emailchecker(CharSequence Email)
     {
         return Patterns.EMAIL_ADDRESS.matcher(Email).matches();
