@@ -17,13 +17,16 @@ import java.util.Map;
 public class Signup extends AppCompatActivity {
     private Button signupButton;
     //Was just called Map before
-    HashMap<String,String> profile= new HashMap<>(); //Create the hashmap
+    HashMap<String,String> profile= new HashMap< >(); //Create the hashmap\\
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup); //Show the layout for it
+        profile.put("John", "123");
+        profile.put("James","456");
 
 
 
@@ -46,6 +49,7 @@ public class Signup extends AppCompatActivity {
                 String Phone=PhoneID.getText().toString();
                 boolean correct;
                 correct=true;
+
 
 
                 if(!emailchecker(Email))
@@ -93,6 +97,8 @@ public class Signup extends AppCompatActivity {
             profile.put(Name, Pass);
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("send", (Serializable) profile);
+            intent.putExtra("uname",Name);
+            intent.putExtra("password",Pass);
             startActivity(intent);
         }
     }

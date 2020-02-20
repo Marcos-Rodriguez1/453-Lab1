@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -27,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //To show main activity layout
 
+/////////////////
+        TextView uname,pword;
+        uname=(TextView) findViewById(R.id.editText_UserName);
+        uname.setText(getIntent().getStringExtra("uname"));
+        pword=(TextView) findViewById(R.id.editText_Password);
+        pword.setText(getIntent().getStringExtra("password"));
+///////////////
         //Im pretty sure this is how you setup to receive the hash tables
         Intent intent=getIntent();
         final HashMap<String,String> hashMap=(HashMap<String,String>)intent.getSerializableExtra("send");
@@ -82,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
         {
             if(hashMap.containsValue(tPW))
             {
+                String Username=username.getText().toString();
                 Intent intent = new Intent(this, Welcome.class);
+                intent.putExtra("Username",Username);
                 startActivity(intent);
             }
         }
