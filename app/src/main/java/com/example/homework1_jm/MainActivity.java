@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // loginUser(hashMap); //
+               loginUser(hashMap, username,password); //
             }
         });
 
@@ -64,8 +65,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void loginUser(HashMap<String, String> hashMap, String user, String pw)
+    public void loginUser(HashMap<String, String> hashMap, EditText user, EditText pw)
     {
-        String
+        String tUser = user.getText().toString().trim();
+        String tPW = pw.getText().toString().trim();
+
+        if(hashMap == null)
+        {
+            Toast.makeText(getApplicationContext(), "EMPTY DATABASE", Toast.LENGTH_LONG).show();
+        }
+        else if(tUser.isEmpty() || tPW.isEmpty())
+        {
+            Toast.makeText(getApplicationContext(), "Username or password are empty", Toast.LENGTH_LONG).show();
+        }
+        else if(hashMap.containsKey(tUser))
+        {
+            if(hashMap.containsValue(tPW))
+            {
+                Intent intent = new Intent(this, Welcome.class);
+                startActivity(intent);
+            }
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
     }
 }
