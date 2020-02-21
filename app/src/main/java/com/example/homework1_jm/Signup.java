@@ -53,12 +53,6 @@ public class Signup extends AppCompatActivity {
 
         //checks if User meets all requirements
 
-                if(profile.containsValue(Name))
-                {
-                    Toast.makeText(getApplicationContext(),"Username exists", Toast.LENGTH_SHORT).show();
-                    correct=false;
-                }
-
                 if(!emailchecker(Email))
                 {
                   Toast.makeText(getApplicationContext(),"email incorrect", Toast.LENGTH_SHORT).show();

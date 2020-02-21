@@ -75,19 +75,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void loginUser(HashMap<String, String> hashMap, EditText user, EditText pw)
     {
+        //Get the values from the user input
         String tUser = user.getText().toString().trim();
         String tPW = pw.getText().toString().trim();
 
+        //If there is nothing in the hash, says it's empty
         if(hashMap == null)
         {
             Toast.makeText(getApplicationContext(), "EMPTY DATABASE", Toast.LENGTH_LONG).show();
         }
+        //If user leaves fields empty
         else if(tUser.isEmpty() || tPW.isEmpty())
         {
             Toast.makeText(getApplicationContext(), "Username or password are empty", Toast.LENGTH_LONG).show();
         }
+        //If the username matches check if the password does too
         else if(hashMap.containsKey(tUser))
         {
+            //Once you get the password go to the welcome page
             if(hashMap.containsValue(tPW))
             {
                 String Username=username.getText().toString();
@@ -95,9 +100,18 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("Username",Username);
                 startActivity(intent);
             }
+            //If wrong password
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_LONG).show();
+                password.setText(null);
+            }
         }
+
+        //If everything fails make a error message
         else {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+            password.setText(" ");
         }
     }
 }
