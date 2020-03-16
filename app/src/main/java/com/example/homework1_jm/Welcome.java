@@ -75,9 +75,9 @@ public class Welcome extends AppCompatActivity {
 
                     JSONArray cars = new JSONArray(jsonStr);
 
-                    for(int i=0;i<json.length();i++)
+                    for(int i=0;i<cars.length();i++)
                     {
-                        JSONObject c =json.getJSONObject(i);
+                        JSONObject c =cars.getJSONObject(i);
 
                         String id=c.getString("id");
                         String vehicle_make=c.getString("vehicle_make");
