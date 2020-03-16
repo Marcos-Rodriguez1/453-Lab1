@@ -45,8 +45,6 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        name=(TextView) findViewById(R.id.UN);
-        name.setText(getIntent().getStringExtra("Username"));
 
         carList=new ArrayList<>();
         lv=(ListView) findViewById(R.id.list);
@@ -77,9 +75,8 @@ public class Welcome extends AppCompatActivity {
             if(jsonStr != null)
             {
                 try{
-                    JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    JSONArray cars=jsonObj.getJSONArray(null);
+                    JSONArray cars = new JSONArray(jsonStr);
 
                     for(int i=0;i<cars.length();i++)
                     {
