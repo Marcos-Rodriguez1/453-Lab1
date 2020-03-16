@@ -51,12 +51,9 @@ public class Welcome extends AppCompatActivity {
         carList=new ArrayList<>();
         lv=(ListView) findViewById(R.id.list);
         new GetCars().execute();
-
-
     }
 
     //creates an async task
-
     private class GetCars extends AsyncTask<Void,Void,Void>
     {
         //so you put loading bar and shit here
@@ -77,13 +74,12 @@ public class Welcome extends AppCompatActivity {
             if(jsonStr != null)
             {
                 try{
-                    JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    JSONArray cars=jsonObj.getJSONArray(null);
+                    JSONArray json= new JSONArray(jsonStr);
 
-                    for(int i=0;i<cars.length();i++)
+                    for(int i=0;i<json.length();i++)
                     {
-                        JSONObject c =cars.getJSONObject(i);
+                        JSONObject c =json.getJSONObject(i);
 
                         String id=c.getString("id");
                         String vehicle_make=c.getString("vehicle_make");
@@ -103,8 +99,6 @@ public class Welcome extends AppCompatActivity {
             }
             return null;
         }
-
-
         @Override
         protected void onPostExecute(Void result)
         {
