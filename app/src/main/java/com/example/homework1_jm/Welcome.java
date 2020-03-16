@@ -45,8 +45,6 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        name=(TextView) findViewById(R.id.UN);
-        name.setText(getIntent().getStringExtra("Username"));
 
         carList=new ArrayList<>();
         lv=(ListView) findViewById(R.id.list);
