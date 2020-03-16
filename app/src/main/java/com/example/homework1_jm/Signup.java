@@ -82,9 +82,6 @@ public class Signup extends AppCompatActivity {
                     opensignin(Name,Pass);
                 }
 
-
-
-
             }
         });
     }
