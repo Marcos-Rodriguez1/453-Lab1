@@ -45,11 +45,14 @@ public class Welcome extends AppCompatActivity {
     String Modelid;
     String Vmakeid;
     String modelweb;
+    String getNewIdWeb;
     String availableweb;
+    private ListView lv;
 
 
     Button mButton;
     Button mButton2;
+    Button mButton3;
     private static String urlcars=("https://thawing-beach-68207.herokuapp.com/carmakes");
     private static String urlmodles =("https://thawing-beach-68207.herokuapp.com/carmodelmakes/");
     private static String urlavailable=("https://thawing-beach-68207.herokuapp.com/cars/");
@@ -57,6 +60,7 @@ public class Welcome extends AppCompatActivity {
 
     ArrayList<HashMap<String,String>> carList;
     ArrayList<HashMap<String,String>> modelList;
+    ArrayList<HashMap<String,String>> newIdList = new ArrayList<>();
 
 
     @Override
@@ -67,6 +71,8 @@ public class Welcome extends AppCompatActivity {
 
         carList=new ArrayList<>();
         modelList=new ArrayList<>();
+        newIdList = new ArrayList<>();
+
         spinner=(Spinner) findViewById(R.id.spin);
         spinner2=(Spinner) findViewById(R.id.spin2);
         mButton=(Button)findViewById(R.id.button);
@@ -74,7 +80,7 @@ public class Welcome extends AppCompatActivity {
         test=(TextView)findViewById(R.id.test);
         test2=(TextView)findViewById(R.id.test2);
         idmodel=(TextView)findViewById(R.id.idmodel);
-
+        lv = findViewById(R.id.list);
 
         mButton.setOnClickListener(new View.OnClickListener()
         {
@@ -105,6 +111,9 @@ public class Welcome extends AppCompatActivity {
                 availableweb=(urlavailable+Vmakeid+"/"+Modelid+"/"+"92603");
 
                 test2.setText(availableweb);
+
+                new getNewVehicle().execute();
+
 
             }
         });
@@ -236,6 +245,75 @@ public class Welcome extends AppCompatActivity {
         }
     }
 
+    private class getNewVehicle extends AsyncTask<Void,Void,Void>
+    {
+        //so you put loading bar and shit here
+        @Override
+        protected void onPreExecute()
+        {
+
+        }
+        @Override
+        protected Void doInBackground (Void... arg0)
+        {
+            newIdList.clear();
+
+            HttpHandler sh=new HttpHandler();
+
+            String jsonStr=sh.makeServiceCall(availableweb);
+
+            Log.e(TAG,"response from url: "+jsonStr );
+
+            if(jsonStr != null)
+            {
+                try{
+
+
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    // Getting JSON Array node
+                    JSONArray newVehicleId = jsonObj.getJSONArray("lists");
+
+
+                    for(int i=0;i< newVehicleId.length();i++)
+                    {
+                        JSONObject c = newVehicleId.getJSONObject(i);
+
+                        String idNew=c.getString("id");
+                        //String model=c.getString("model");
+                        //String vehicle_make_id=c.getString("vehicle_make_id");
+
+                        HashMap<String,String> vehicleInformation =new HashMap<>();
+
+                        vehicleInformation.put("id",idNew);
+
+
+                        //modelcar.put("model",model);
+                        //modelcar.put("vehicle_make_id",vehicle_make_id);
+
+                        newIdList.add(vehicleInformation);
+                    }
+
+                    //add the exception here if that shit doesnt work
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            super.onPostExecute(result);
+            ListAdapter adapter= new SimpleAdapter(Welcome.this,newIdList,
+                    R.layout.list3_item, new String[]{"id"},
+                    new int []{R.id.newVehicle_id});
+
+
+            lv.setAdapter(adapter);
+
+        }
+    }
 
 
 
