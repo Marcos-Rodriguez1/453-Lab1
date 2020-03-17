@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +58,7 @@ public class Welcome extends AppCompatActivity {
     private static String urlcars=("https://thawing-beach-68207.herokuapp.com/carmakes");
     private static String urlmodles =("https://thawing-beach-68207.herokuapp.com/carmodelmakes/");
     private static String urlavailable=("https://thawing-beach-68207.herokuapp.com/cars/");
-    private static String urldetails=("https://thawing-beach-68207.herokuapp.com/cars/%3ccarid");
+    private static String urldetails=("https://thawing-beach-68207.herokuapp.com/cars/");
 
     ArrayList<HashMap<String,String>> carList;
     ArrayList<HashMap<String,String>> modelList;
@@ -113,13 +115,21 @@ public class Welcome extends AppCompatActivity {
                 test2.setText(availableweb);
 
                 new getNewVehicle().execute();
-
-
             }
         });
 
+       lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+               String value = lv.getItemAtPosition(i).toString();
+               value = value.replaceAll("[^-?0-9]+", "");
 
+               Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
+
+               urldetails = urldetails + value; //Give the final url
+           }
+       });
 
 
         new GetCars().execute();
