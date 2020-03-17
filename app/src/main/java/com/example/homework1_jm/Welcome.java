@@ -36,16 +36,23 @@ public class Welcome extends AppCompatActivity {
 //Creates the welcome screen and gets the information from the main activity
     private String TAG=Welcome.class.getSimpleName();
     TextView test;
+    TextView test2;
+    TextView idmodel;
 
     Spinner spinner;
     Spinner spinner2;
     String Carid;
+    String Modelid;
+    String Vmakeid;
     String modelweb;
+    String availableweb;
+
 
     Button mButton;
+    Button mButton2;
     private static String urlcars=("https://thawing-beach-68207.herokuapp.com/carmakes");
     private static String urlmodles =("https://thawing-beach-68207.herokuapp.com/carmodelmakes/");
-    private static String urlavailable=("https://thawing-beach-68207.herokuapp.com/cars/10/20/92603");
+    private static String urlavailable=("https://thawing-beach-68207.herokuapp.com/cars/");
     private static String urldetails=("https://thawing-beach-68207.herokuapp.com/cars/%3ccarid");
 
     ArrayList<HashMap<String,String>> carList;
@@ -63,7 +70,12 @@ public class Welcome extends AppCompatActivity {
         spinner=(Spinner) findViewById(R.id.spin);
         spinner2=(Spinner) findViewById(R.id.spin2);
         mButton=(Button)findViewById(R.id.button);
+        mButton2=(Button)findViewById(R.id.button2);
         test=(TextView)findViewById(R.id.test);
+        test2=(TextView)findViewById(R.id.test2);
+        idmodel=(TextView)findViewById(R.id.idmodel);
+
+
         mButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -76,6 +88,30 @@ public class Welcome extends AppCompatActivity {
                 new GetModel().execute();
             }
         });
+
+        mButton2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Modelid=spinner2.getSelectedItem().toString();
+
+                String [] twoStringArray= Modelid.split(",",3);
+
+                Modelid=twoStringArray[1];
+                Modelid = Modelid.replaceAll("[^-?0-9]+", "");
+                Vmakeid=twoStringArray[2];
+                Vmakeid = Vmakeid.replaceAll("[^-?0-9]+", "");
+                availableweb=(urlavailable+Vmakeid+"/"+Modelid+"/"+"92603");
+
+                test2.setText(availableweb);
+
+            }
+        });
+
+
+
+
 
         new GetCars().execute();
     }

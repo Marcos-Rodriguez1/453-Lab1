@@ -27,7 +27,8 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="match_parent"
+            android:text="confirm"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <Spinner
@@ -37,6 +38,19 @@
         android:layout_gravity=""
         />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="confirm" />
+
+        <TextView
+            android:id="@+id/test2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="testing2" />
+
     </LinearLayout>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
 
