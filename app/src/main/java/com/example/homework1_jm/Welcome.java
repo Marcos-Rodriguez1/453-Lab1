@@ -67,6 +67,8 @@ public class Welcome extends AppCompatActivity {
     private String CARMAKE = "";
     private String CARMODEL = "";
 
+    //jaguar,tesla,lamborghini,ferrari,porsche,bugatti,maserati,bmw,aston Martin,bently
+
 
     Button mButton;
     Button mButton2;
@@ -79,6 +81,7 @@ public class Welcome extends AppCompatActivity {
     ArrayList<HashMap<String,String>> carList;
     ArrayList<HashMap<String,String>> modelList;
     ArrayList<HashMap<String,String>> newIdList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -111,8 +114,7 @@ public class Welcome extends AppCompatActivity {
                 Carid= spinner.getSelectedItem().toString();
                 //Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
                 Carid = Carid.replaceAll("[^-?0-9]+", "");
-                //Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
-                test.setText(urlmodles+Carid);
+
                 modelweb=(urlmodles+Carid);
 
 //
