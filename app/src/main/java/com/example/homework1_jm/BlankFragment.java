@@ -85,21 +85,6 @@ public class BlankFragment extends Fragment {
 
     }
 
-    public static Drawable LoadImageFromWebOperations(String url)
-    {
-        try{
-            InputStream is =(InputStream) new URL(url).getContent();
-            Drawable d=Drawable.createFromStream(is, "src name");
-            return d;
-
-        } catch (Exception e) {
-            return null;
-        }
-
-    }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
