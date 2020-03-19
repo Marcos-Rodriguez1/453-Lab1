@@ -153,10 +153,10 @@ public class BlankFragment extends Fragment {
 
             String url = vehicleDISPLAY.get("image_url");
 
-            price.setText(vehicleDISPLAY.get("price"));
+            price.setText("Price: $" + vehicleDISPLAY.get("price"));
             location.setText(vehicleDISPLAY.get("veh_description"));
             Glide.with(BlankFragment.this).load(url).into(image);
-            update.setText(vehicleDISPLAY.get("updated_at"));
+            update.setText("Last Update: " + vehicleDISPLAY.get("updated_at"));
 
 //            SpinnerAdapter adapter= new SimpleAdapter(BlankFragment.this, vehicleDISPLAY,
 //                    R.layout.fragment_blank,new String[]{"id","vehicle_make"},

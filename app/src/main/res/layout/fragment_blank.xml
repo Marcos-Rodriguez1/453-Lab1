@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="@android:color/white"
     android:clickable="true"
     tools:context=".BlankFragment">
 
@@ -14,20 +14,11 @@
         android:weightSum="2">
 
         <TextView
-            android:id="@+id/makeInfo"
+            android:id="@+id/makeANDmodelINFO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MAKE"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/modelInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Model"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -36,17 +27,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Price"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/vehicleInfo"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="Information about the vehicle will be here, Information about the vehicle will be here"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <ImageView
             android:id="@+id/vehiclePicture"
@@ -60,7 +51,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="Last updated: 8/23/2019"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
 
     </LinearLayout>
