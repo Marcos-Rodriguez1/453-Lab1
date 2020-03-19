@@ -170,7 +170,7 @@ public class Welcome extends AppCompatActivity {
 
 
                //Open the fragment
-               openFragment(temp);
+               openFragment(temp,VeModel,VMake);
 
 
            }
@@ -180,9 +180,9 @@ public class Welcome extends AppCompatActivity {
         new GetCars().execute();
     }
 
-    public void openFragment(String test1)
+    public void openFragment(String test1,String test2, String test3)
     {
-        BlankFragment fragment = BlankFragment.newInstance(test1);
+        BlankFragment fragment = BlankFragment.newInstance(test1,test2,test3);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
