@@ -14,12 +14,12 @@
         android:weightSum="2">
 
         <TextView
-            android:id="@+id/makeANDmodelINFO"
+            android:id="@+id/makeModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MAKE"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:text="MAKE AND MODEL"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:id="@+id/priceInfo"
