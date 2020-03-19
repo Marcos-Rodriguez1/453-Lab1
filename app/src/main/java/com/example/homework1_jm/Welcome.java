@@ -130,10 +130,6 @@ public class Welcome extends AppCompatActivity {
                 test.setText(VMake);
 
 
-
-                new GetModel().execute();
-
-
             }
         });
 
