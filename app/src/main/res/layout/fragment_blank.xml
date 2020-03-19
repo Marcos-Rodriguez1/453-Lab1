@@ -17,7 +17,6 @@
             android:id="@+id/makeModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MAKE AND MODEL"
             android:textSize="20sp"
             android:textColor="@android:color/black"/>
 
@@ -26,7 +25,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Price"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 
@@ -36,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="Information about the vehicle will be here, Information about the vehicle will be here"
             android:textColor="@android:color/black"/>
 
         <ImageView
@@ -50,7 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="Last updated: 8/23/2019"
             android:textColor="@android:color/black"/>
 
 

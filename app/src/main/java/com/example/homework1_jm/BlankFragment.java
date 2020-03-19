@@ -29,27 +29,28 @@ import java.util.HashMap;
 
 public class BlankFragment extends Fragment {
 
+    //text, text2, and text3 get the url and then get the vehicle make and model
     private static final String TEXT = "text";
     private static final String TEXT2= "text2";
     private static final String TEXT3= "text3";
 
+    //String that will hold the final api call and the vehicle make and model
     private String finalApiCall;
+    private String mm;
+
+    //Hashmap that will store the values of information
     private HashMap<String,String> vehicleDISPLAY=new HashMap<>();
 
-    //Information to display
+   //Text views that will show information to the user
     private TextView makeAndModelDisplay;
     private TextView price;
     private TextView location;
     private ImageView image;
     private TextView update;
-    private String mm;
-
 
     public BlankFragment() {}
 
-
-
-                                                           //String param2
+    //Grabs the arguments and places them into the temporary text fields
     public static BlankFragment newInstance(String text,String text2, String text3) {
         BlankFragment fragment = new BlankFragment();
         Bundle args = new Bundle();
@@ -60,6 +61,7 @@ public class BlankFragment extends Fragment {
         return fragment;
     }
 
+    //Grab the information and place it in variables that will display the information
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -71,52 +73,51 @@ public class BlankFragment extends Fragment {
         }
     }
 
+    //Connect all the views and call the async method to grab the information
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
 
+        View view = inflater.inflate(R.layout.fragment_blank, container, false);
 
         price = view.findViewById(R.id.priceInfo);
         location = view.findViewById(R.id.vehicleInfo);
         image = view.findViewById(R.id.vehiclePicture);
         update = view.findViewById(R.id.lastUpdateInfo);
-        makeAndModelDisplay = view.findViewById(R.id.makeModel)
+        makeAndModelDisplay = view.findViewById(R.id.makeModel);
         new GetInfo().execute();
-
-//        thisIsATest = view.findViewById(R.id.makeInfo);
-//
-//        thisIsATest.setText(mText);
-
 
         return view;
     }
 
+    //Where the information will be grabbed from the api call
     private class GetInfo extends AsyncTask<Void,Void,Void>
     {
         @Override
-        protected void onPreExecute()
-        {
+        protected void onPreExecute() {}
 
-        }
         @Override
         protected Void doInBackground (Void... arg0)
         {
+            //To open up the api calls
             HttpHandler sh=new HttpHandler();
 
+            //Get the strings for the api call
             String jsonStr=sh.makeServiceCall(finalApiCall);
 
             if(jsonStr != null)
             {
                 try{
 
-                    JSONArray cars = new JSONArray(jsonStr);
+                    //Where the information will be placed
+                    JSONArray vehicleInfo = new JSONArray(jsonStr);
 
-                    for(int i=0;i<cars.length();i++)
+                    for(int i=0; i < vehicleInfo.length();i++)
                     {
-                        JSONObject c =cars.getJSONObject(i);
+                        //Where the api info will show up
+                        JSONObject c = vehicleInfo.getJSONObject(i);
 
+                        //Fetching all the information
                         String vehiclePRICE =c.getString("price");
                         String vehicleDES=c.getString("veh_description");
                         String vehicleIMAGE = c.getString("image_url");
@@ -126,10 +127,7 @@ public class BlankFragment extends Fragment {
                         vehicleDISPLAY.put("veh_description", vehicleDES);
                         vehicleDISPLAY.put("image_url", vehicleIMAGE);
                         vehicleDISPLAY.put("updated_at", vehicleUPDATED);
-
-
                     }
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -137,17 +135,23 @@ public class BlankFragment extends Fragment {
             }
             return null;
         }
+
         @Override
         protected void onPostExecute(Void result)
         {
             super.onPostExecute(result);
 
-            String url = vehicleDISPLAY.get("image_url");
+            makeAndModelDisplay.setText(mm);
 
-            price.setText("Price: $" + vehicleDISPLAY.get("price"));
-            location.setText(vehicleDISPLAY.get("veh_description"));
-            Glide.with(BlankFragment.this).load(url).into(image);
-            update.setText("Last Update: " + vehicleDISPLAY.get("updated_at"));
+            String url = vehicleDISPLAY.get("image_url"); //Gets the url and sets it to string to avoid errors
+
+            price.setText("Price: $" + vehicleDISPLAY.get("price")); //Set the price with money signs
+
+            location.setText(vehicleDISPLAY.get("veh_description"));// Place the location
+
+            Glide.with(BlankFragment.this).load(url).into(image); //Dispaly the image
+
+            update.setText("Last Update: " + vehicleDISPLAY.get("updated_at")); //Display when it was last displayed
         }
     }
 }
