@@ -1,5 +1,6 @@
 package com.example.homework1_jm;
 
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -21,6 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 
 
@@ -74,6 +77,21 @@ public class BlankFragment extends Fragment {
         }
 
     }
+
+    public static Drawable LoadImageFromWebOperations(String url)
+    {
+        try{
+            InputStream is =(InputStream) new URL(url).getContent();
+            Drawable d=Drawable.createFromStream(is, "src name");
+            return d;
+
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -157,6 +175,8 @@ public class BlankFragment extends Fragment {
             location.setText(vehicleDISPLAY.get("veh_description"));
             Glide.with(BlankFragment.this).load(url).into(image);
             update.setText("Last Update: " + vehicleDISPLAY.get("updated_at"));
+
+
 
 //            SpinnerAdapter adapter= new SimpleAdapter(BlankFragment.this, vehicleDISPLAY,
 //                    R.layout.fragment_blank,new String[]{"id","vehicle_make"},

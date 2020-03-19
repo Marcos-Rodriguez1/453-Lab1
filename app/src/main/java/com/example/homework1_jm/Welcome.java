@@ -47,12 +47,16 @@ public class Welcome extends AppCompatActivity {
 
     Spinner spinner;
     Spinner spinner2;
+    String VeModel;
     String Carid;
     String Modelid;
     String Vmakeid;
     String modelweb;
     String getNewIdWeb;
     String availableweb;
+
+
+    String VMake;
     private ListView lv;
 
 /////////////////////////////Information for the fragments
@@ -81,6 +85,8 @@ public class Welcome extends AppCompatActivity {
     ArrayList<HashMap<String,String>> carList;
     ArrayList<HashMap<String,String>> modelList;
     ArrayList<HashMap<String,String>> newIdList = new ArrayList<>();
+
+    String VeMake[]= new String []{"Jaguar","Tesla","Lamborghini","Ferrari","Porsche","Bugatti","Maserati","BMW","Aston Martin","Bently"};
 
 
     @Override
@@ -117,26 +123,12 @@ public class Welcome extends AppCompatActivity {
 
                 modelweb=(urlmodles+Carid);
 
-//
-//                HashMap<String, String> hashMap = new HashMap<String, String>();
-//
-//                String value = hashMap.get("2");
-//
-              // Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
-                for (int i=0; i < carList.size(); i++)
-                {
-                    HashMap<String, String> hashmap = carList.get(i);
-                    String value = hashmap.get("id");
-                    if(value == Carid) {
-                        Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                    //if(hashmap.containsKey(Carid))
-//                   {
-//                       Toast.makeText(getApplication(), "YES found " + Carid, Toast.LENGTH_LONG).show();
-//                       break;
-//                   }
-                }
+                int cid=Integer.parseInt(Carid);
+
+                VMake=VeMake[cid-2];
+
+                test.setText(VMake);
+
 
 
                 new GetModel().execute();
@@ -159,8 +151,10 @@ public class Welcome extends AppCompatActivity {
                 Vmakeid=twoStringArray[2];
                 Vmakeid = Vmakeid.replaceAll("[^-?0-9]+", "");
                 availableweb=(urlavailable+Vmakeid+"/"+Modelid+"/"+"92603");
-
-                test2.setText(twoStringArray[0]);
+                VeModel=twoStringArray[0];
+                String target=VeModel.copyValueOf("{model=".toCharArray());
+                VeModel=VeModel.replace(target,"");
+                test2.setText(VeModel);
 
                 new getNewVehicle().execute();
             }
