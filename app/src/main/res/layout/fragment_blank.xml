@@ -50,9 +50,8 @@
 
         <ImageView
             android:id="@+id/vehiclePicture"
-            android:layout_width="136px"
-            android:layout_height="145px"
-            android:background="@android:color/white"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"/>
 
         <TextView

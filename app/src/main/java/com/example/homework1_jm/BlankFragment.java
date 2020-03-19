@@ -14,6 +14,8 @@ import android.widget.SimpleAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -149,9 +151,11 @@ public class BlankFragment extends Fragment {
         {
             super.onPostExecute(result);
 
+            String url = vehicleDISPLAY.get("image_url");
+
             price.setText(vehicleDISPLAY.get("price"));
             location.setText(vehicleDISPLAY.get("veh_description"));
-            //image.
+            Glide.with(BlankFragment.this).load(url).into(image);
             update.setText(vehicleDISPLAY.get("updated_at"));
 
 //            SpinnerAdapter adapter= new SimpleAdapter(BlankFragment.this, vehicleDISPLAY,
