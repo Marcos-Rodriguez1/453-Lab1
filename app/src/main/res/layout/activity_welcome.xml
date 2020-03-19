@@ -1,65 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Welcome">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="2"
-        >
+
     <Spinner
         android:id="@+id/spin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/test"
-            android:text="testing"
-            android:layout_width="match_parent"
-            android:layout_height="50sp"/>
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:text="testing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin" />
 
-        <Button
-            android:id="@+id/button"
-            android:text="confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test" />
 
-        <Spinner
+    <Spinner
         android:id="@+id/spin2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity=""
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="confirm" />
+    <TextView
+        android:id="@+id/test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="testing2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin2" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test2" />
 
-        <TextView
-            android:id="@+id/test2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="testing2" />
 
-        <ListView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
-        <FrameLayout
-            android:id="@+id/fragment_carInfo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <FrameLayout
+        android:id="@+id/fragment_carInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

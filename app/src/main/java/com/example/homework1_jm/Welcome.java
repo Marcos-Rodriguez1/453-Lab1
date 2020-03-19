@@ -165,7 +165,7 @@ public class Welcome extends AppCompatActivity {
         //Only close fragment
         transaction.addToBackStack(null);
 
-        transaction.add(R.id.fragment_carInfo, fragment, "BLANK_FRAGMENT").commit();
+        transaction.replace(R.id.fragment_carInfo, fragment, "BLANK_FRAGMENT").commit();
     }
 
     //creates an async task
