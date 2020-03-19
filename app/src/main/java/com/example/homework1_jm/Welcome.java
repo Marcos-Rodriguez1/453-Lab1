@@ -117,28 +117,6 @@ public class Welcome extends AppCompatActivity {
 
                 modelweb=(urlmodles+Carid);
 
-//
-//                HashMap<String, String> hashMap = new HashMap<String, String>();
-//
-//                String value = hashMap.get("2");
-//
-              // Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
-                for (int i=0; i < carList.size(); i++)
-                {
-                    HashMap<String, String> hashmap = carList.get(i);
-                    String value = hashmap.get("id");
-                    if(value == Carid) {
-                        Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                    //if(hashmap.containsKey(Carid))
-//                   {
-//                       Toast.makeText(getApplication(), "YES found " + Carid, Toast.LENGTH_LONG).show();
-//                       break;
-//                   }
-                }
-
-
                 new GetModel().execute();
 
 
