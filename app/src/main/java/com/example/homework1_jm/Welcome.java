@@ -95,6 +95,8 @@ public class Welcome extends AppCompatActivity {
         fragmentContainer = findViewById(R.id.fragment_carInfo);
 
 
+        //This setonclick listener gets theh selected from the spinner then gets the car id and model as a string the parses it so we can
+        // put it into the url so we can get the next api
         mButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -114,6 +116,7 @@ public class Welcome extends AppCompatActivity {
             }
         });
 
+        //This method gets the information as a string from the spinner parses it so we can add it to the url and recieve the information for the next api
         mButton2.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -135,6 +138,7 @@ public class Welcome extends AppCompatActivity {
             }
         });
 
+        //This gets the item from teh listview and we parse to get the final url and then pass it through the fragment
        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -172,7 +176,7 @@ public class Welcome extends AppCompatActivity {
         transaction.replace(R.id.fragment_carInfo, fragment, "BLANK_FRAGMENT").commit();
     }
 
-    //creates an async task
+    //creates an async tasks
     private class GetCars extends AsyncTask<Void,Void,Void>
     {
 
