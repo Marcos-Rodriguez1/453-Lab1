@@ -192,8 +192,6 @@ public class Welcome extends AppCompatActivity {
 
             String jsonStr=sh.makeServiceCall(urlcars);
 
-            Log.e(TAG,"response from url: "+jsonStr );
-
             if(jsonStr != null)
             {
                 try{
@@ -249,8 +247,6 @@ public class Welcome extends AppCompatActivity {
             HttpHandler sh=new HttpHandler();
 
             String jsonStr=sh.makeServiceCall(modelweb);
-
-            Log.e(TAG,"response from url: "+jsonStr );
 
             if(jsonStr != null)
             {
@@ -356,11 +352,5 @@ public class Welcome extends AppCompatActivity {
 
         }
     }
-
-
-
-
-
-
 
 }
