@@ -36,6 +36,8 @@ public class BlankFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TEXT = "text";
+    private static final String TEXT2= "text2";
+    private static final String TEXT3= "text3";
     //private static final String ARG_PARAM2 = "param2";
 
     private TextView thisIsATest;
@@ -50,6 +52,7 @@ public class BlankFragment extends Fragment {
     private TextView location;
     private ImageView image;
     private TextView update;
+    private String mm;
     //private String mParam2;
 
     public BlankFragment() {
@@ -59,10 +62,12 @@ public class BlankFragment extends Fragment {
 
 
                                                            //String param2
-    public static BlankFragment newInstance(String text) {
+    public static BlankFragment newInstance(String text,String text2, String text3) {
         BlankFragment fragment = new BlankFragment();
         Bundle args = new Bundle();
         args.putString(TEXT, text);
+        args.putString(TEXT2,text2);
+        args.putString(TEXT3,text3);
         //args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -73,6 +78,8 @@ public class BlankFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             finalApiCall = getArguments().getString(TEXT);
+            mm=getArguments().getString(TEXT2)+ " " +getArguments().getString(TEXT3);
+
             //mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
@@ -104,6 +111,9 @@ public class BlankFragment extends Fragment {
         location = view.findViewById(R.id.vehicleInfo);
         image = view.findViewById(R.id.vehiclePicture);
         update = view.findViewById(R.id.lastUpdateInfo);
+
+        makeANDmodel= view.findViewById(R.id.makeANDmodelINFO);
+        makeANDmodel.setText(mm);
 
         new GetInfo().execute();
 
