@@ -20,7 +20,7 @@
         android:id="@+id/test"
         android:layout_width="match_parent"
         android:layout_height="50sp"
-        android:text="testing"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin" />
@@ -48,7 +48,7 @@
         android:id="@+id/test2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="testing2"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin2" />

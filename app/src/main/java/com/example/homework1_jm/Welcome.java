@@ -39,12 +39,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Welcome extends AppCompatActivity {
-//Creates the welcome screen and gets the information from the main activity
     private String TAG=Welcome.class.getSimpleName();
     TextView test;
     TextView test2;
     TextView idmodel;
-
     Spinner spinner;
     Spinner spinner2;
     String VeModel;
@@ -52,31 +50,16 @@ public class Welcome extends AppCompatActivity {
     String Modelid;
     String Vmakeid;
     String modelweb;
-    String getNewIdWeb;
     String availableweb;
 
 
     String VMake;
     private ListView lv;
 
-/////////////////////////////Information for the fragments
     private FrameLayout fragmentContainer;
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////
-    private String CARMAKE = "";
-    private String CARMODEL = "";
-
-    //jaguar,tesla,lamborghini,ferrari,porsche,bugatti,maserati,bmw,aston Martin,bently
-
 
     Button mButton;
     Button mButton2;
-    Button mButton3;
     private static String urlcars=("https://thawing-beach-68207.herokuapp.com/carmakes");
     private static String urlmodles =("https://thawing-beach-68207.herokuapp.com/carmodelmakes/");
     private static String urlavailable=("https://thawing-beach-68207.herokuapp.com/cars/");
@@ -118,7 +101,6 @@ public class Welcome extends AppCompatActivity {
             public void onClick(View v)
             {
                 Carid= spinner.getSelectedItem().toString();
-                //Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
                 Carid = Carid.replaceAll("[^-?0-9]+", "");
 
                 modelweb=(urlmodles+Carid);
@@ -126,8 +108,6 @@ public class Welcome extends AppCompatActivity {
                 int cid=Integer.parseInt(Carid);
 
                 VMake=VeMake[cid-2];
-
-                test.setText(VMake);
 
                 new GetModel().execute();
 
@@ -151,8 +131,6 @@ public class Welcome extends AppCompatActivity {
                 VeModel=twoStringArray[0];
                 String target=VeModel.copyValueOf("{model=".toCharArray());
                 VeModel=VeModel.replace(target,"");
-                test2.setText(VeModel);
-
                 new getNewVehicle().execute();
             }
         });
@@ -197,7 +175,7 @@ public class Welcome extends AppCompatActivity {
     //creates an async task
     private class GetCars extends AsyncTask<Void,Void,Void>
     {
-        //so you put loading bar and shit here
+
         @Override
         protected void onPreExecute()
         {
@@ -233,7 +211,6 @@ public class Welcome extends AppCompatActivity {
                         carList.add(car);
                     }
 
-                    //add the exception here if that shit doesnt work
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -255,7 +232,6 @@ public class Welcome extends AppCompatActivity {
 
     private class GetModel extends AsyncTask<Void,Void,Void>
     {
-        //so you put loading bar and shit here
         @Override
         protected void onPreExecute()
         {
@@ -295,7 +271,6 @@ public class Welcome extends AppCompatActivity {
                         modelList.add(modelcar);
                     }
 
-                    //add the exception here if that shit doesnt work
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -349,21 +324,15 @@ public class Welcome extends AppCompatActivity {
                         JSONObject c = newVehicleId.getJSONObject(i);
 
                         String idNew=c.getString("id");
-                        //String model=c.getString("model");
-                        //String vehicle_make_id=c.getString("vehicle_make_id");
 
                         HashMap<String,String> vehicleInformation =new HashMap<>();
 
                         vehicleInformation.put("id",idNew);
 
 
-                        //modelcar.put("model",model);
-                        //modelcar.put("vehicle_make_id",vehicle_make_id);
-
                         newIdList.add(vehicleInformation);
                     }
 
-                    //add the exception here if that shit doesnt work
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
