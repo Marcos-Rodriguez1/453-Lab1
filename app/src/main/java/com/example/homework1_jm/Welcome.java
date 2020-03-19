@@ -143,10 +143,12 @@ public class Welcome extends AppCompatActivity {
 
                Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
 
-               urldetails = urldetails + value; //Give the final url
+               String temp = urldetails + value; //Give the final url
 
                //Open the fragment
-               openFragment(urldetails);
+               openFragment(temp);
+
+
            }
        });
 

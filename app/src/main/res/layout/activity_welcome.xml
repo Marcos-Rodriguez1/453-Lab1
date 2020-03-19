@@ -32,7 +32,8 @@
         android:text="confirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test" />
+        app:layout_constraintTop_toBottomOf="@+id/test"
+        android:stateListAnimator="@null"/>
 
     <Spinner
         android:id="@+id/spin2"
@@ -58,7 +59,8 @@
         android:text="confirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test2" />
+        app:layout_constraintTop_toBottomOf="@+id/test2"
+        android:stateListAnimator="@null"/>
 
 
 
