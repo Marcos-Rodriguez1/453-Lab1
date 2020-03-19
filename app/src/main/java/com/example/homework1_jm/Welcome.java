@@ -1,6 +1,8 @@
 package com.example.homework1_jm;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -10,6 +12,7 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -51,6 +54,16 @@ public class Welcome extends AppCompatActivity {
     String availableweb;
     private ListView lv;
 
+/////////////////////////////Information for the fragments
+    private FrameLayout fragmentContainer;
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////
+
 
     Button mButton;
     Button mButton2;
@@ -83,6 +96,9 @@ public class Welcome extends AppCompatActivity {
         test2=(TextView)findViewById(R.id.test2);
         idmodel=(TextView)findViewById(R.id.idmodel);
         lv = findViewById(R.id.list);
+
+        //For the fragment
+        fragmentContainer = findViewById(R.id.fragment_carInfo);
 
         mButton.setOnClickListener(new View.OnClickListener()
         {
@@ -128,11 +144,28 @@ public class Welcome extends AppCompatActivity {
                Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
 
                urldetails = urldetails + value; //Give the final url
+
+               //Open the fragment
+               openFragment(urldetails);
            }
        });
 
 
         new GetCars().execute();
+    }
+
+    public void openFragment(String test1)
+    {
+        BlankFragment fragment = BlankFragment.newInstance(test1);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        //Only close fragment
+        transaction.addToBackStack(null);
+
+        transaction.add(R.id.fragment_carInfo, fragment, "BLANK_FRAGMENT").commit();
     }
 
     //creates an async task
