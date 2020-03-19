@@ -64,6 +64,8 @@ public class Welcome extends AppCompatActivity {
 
 //////////////////////////////////////////////////////////////
 
+    //jaguar,tesla,lamborghini,ferrari,porsche,bugatti,maserati,bmw,aston Martin,bently
+
 
     Button mButton;
     Button mButton2;
@@ -76,6 +78,8 @@ public class Welcome extends AppCompatActivity {
     ArrayList<HashMap<String,String>> carList;
     ArrayList<HashMap<String,String>> modelList;
     ArrayList<HashMap<String,String>> newIdList = new ArrayList<>();
+
+    String[] makes={"Jaguar","Tesla","lamborghini","Ferrari","Porsche","Bugatti","maserati","BMW","Aston Martin","Bently"};
 
 
     @Override
@@ -107,7 +111,9 @@ public class Welcome extends AppCompatActivity {
             {
                 Carid= spinner.getSelectedItem().toString();
                 Carid = Carid.replaceAll("[^-?0-9]+", "");
-                test.setText(urlmodles+Carid);
+                int k=Integer.parseInt(Carid);
+
+                test.setText(makes[k-2]);
                 modelweb=(urlmodles+Carid);
                 new GetModel().execute();
             }
