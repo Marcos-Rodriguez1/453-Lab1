@@ -30,6 +30,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -63,6 +64,8 @@ public class Welcome extends AppCompatActivity {
 
 
 //////////////////////////////////////////////////////////////
+    private String CARMAKE = "";
+    private String CARMODEL = "";
 
 
     Button mButton;
@@ -76,7 +79,6 @@ public class Welcome extends AppCompatActivity {
     ArrayList<HashMap<String,String>> carList;
     ArrayList<HashMap<String,String>> modelList;
     ArrayList<HashMap<String,String>> newIdList = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -100,16 +102,44 @@ public class Welcome extends AppCompatActivity {
         //For the fragment
         fragmentContainer = findViewById(R.id.fragment_carInfo);
 
+
         mButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 Carid= spinner.getSelectedItem().toString();
+                //Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
                 Carid = Carid.replaceAll("[^-?0-9]+", "");
+                //Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
                 test.setText(urlmodles+Carid);
                 modelweb=(urlmodles+Carid);
+
+//
+//                HashMap<String, String> hashMap = new HashMap<String, String>();
+//
+//                String value = hashMap.get("2");
+//
+              // Toast.makeText(getApplication(), Carid, Toast.LENGTH_LONG).show();
+                for (int i=0; i < carList.size(); i++)
+                {
+                    HashMap<String, String> hashmap = carList.get(i);
+                    String value = hashmap.get("id");
+                    if(value == Carid) {
+                        Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    //if(hashmap.containsKey(Carid))
+//                   {
+//                       Toast.makeText(getApplication(), "YES found " + Carid, Toast.LENGTH_LONG).show();
+//                       break;
+//                   }
+                }
+
+
                 new GetModel().execute();
+
+
             }
         });
 
@@ -128,7 +158,7 @@ public class Welcome extends AppCompatActivity {
                 Vmakeid = Vmakeid.replaceAll("[^-?0-9]+", "");
                 availableweb=(urlavailable+Vmakeid+"/"+Modelid+"/"+"92603");
 
-                test2.setText(availableweb);
+                test2.setText(twoStringArray[0]);
 
                 new getNewVehicle().execute();
             }
@@ -144,6 +174,7 @@ public class Welcome extends AppCompatActivity {
                Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
 
                String temp = urldetails + value; //Give the final url
+
 
                //Open the fragment
                openFragment(temp);

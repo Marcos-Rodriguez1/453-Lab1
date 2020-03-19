@@ -1,13 +1,25 @@
 package com.example.homework1_jm;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.util.HashMap;
 
 
 /**
@@ -24,7 +36,15 @@ public class BlankFragment extends Fragment {
     private TextView thisIsATest;
 
     // TODO: Rename and change types of parameters
-    private String mText;
+    private String finalApiCall;
+    private HashMap<String,String> vehicleDISPLAY=new HashMap<>();
+
+    //Information to display
+    private TextView makeANDmodel;
+    private TextView price;
+    private TextView location;
+    private ImageView image;
+    private TextView update;
     //private String mParam2;
 
     public BlankFragment() {
@@ -47,9 +67,10 @@ public class BlankFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mText = getArguments().getString(TEXT);
+            finalApiCall = getArguments().getString(TEXT);
             //mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -58,10 +79,86 @@ public class BlankFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
 
-        thisIsATest = view.findViewById(R.id.makeInfo);
 
-        thisIsATest.setText(mText);
+        price = view.findViewById(R.id.priceInfo);
+        location = view.findViewById(R.id.vehicleInfo);
+        image = view.findViewById(R.id.vehiclePicture);
+        update = view.findViewById(R.id.lastUpdateInfo);
+
+        new GetInfo().execute();
+
+//        thisIsATest = view.findViewById(R.id.makeInfo);
+//
+//        thisIsATest.setText(mText);
+
 
         return view;
+    }
+
+    private class GetInfo extends AsyncTask<Void,Void,Void>
+    {
+        //so you put loading bar and shit here
+        @Override
+        protected void onPreExecute()
+        {
+
+        }
+        @Override
+        protected Void doInBackground (Void... arg0)
+        {
+            HttpHandler sh=new HttpHandler();
+
+            String jsonStr=sh.makeServiceCall(finalApiCall);
+
+            //Log.e(TAG,"response from url: "+jsonStr );
+
+            if(jsonStr != null)
+            {
+                try{
+
+                    JSONArray cars = new JSONArray(jsonStr);
+
+                    for(int i=0;i<cars.length();i++)
+                    {
+                        JSONObject c =cars.getJSONObject(i);
+
+                        String vehiclePRICE =c.getString("price");
+                        String vehicleDES=c.getString("veh_description");
+                        String vehicleIMAGE = c.getString("image_url");
+                        String vehicleUPDATED = c.getString("updated_at");
+
+                        //HashMap<String,String> vehicleDISPLAY=new HashMap<>();
+
+                        vehicleDISPLAY.put("price", vehiclePRICE);
+                        vehicleDISPLAY.put("veh_description", vehicleDES);
+                        vehicleDISPLAY.put("image_url", vehicleIMAGE);
+                        vehicleDISPLAY.put("updated_at", vehicleUPDATED);
+
+                        //carList.add(car);
+                    }
+
+                    //add the exception here if that shit doesnt work
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            super.onPostExecute(result);
+
+            price.setText(vehicleDISPLAY.get("price"));
+            location.setText(vehicleDISPLAY.get("veh_description"));
+            //image.
+            update.setText(vehicleDISPLAY.get("updated_at"));
+
+//            SpinnerAdapter adapter= new SimpleAdapter(BlankFragment.this, vehicleDISPLAY,
+//                    R.layout.fragment_blank,new String[]{"id","vehicle_make"},
+//                    new int []{R.id.id,R.id.vehicle_make});
+//            spinner.setAdapter(adapter);
+
+        }
     }
 }
