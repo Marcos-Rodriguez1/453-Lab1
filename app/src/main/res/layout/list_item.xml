@@ -15,6 +15,7 @@
         android:id="@+id/vehicle_make"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:paddingTop="6dip"
         android:textSize="16sp"/>
 

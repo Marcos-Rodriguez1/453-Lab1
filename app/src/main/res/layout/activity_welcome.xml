@@ -31,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/makeTop" />
+        app:layout_constraintTop_toBottomOf="@+id/makeTop"
+        android:popupBackground="@android:color/black"/>
 
 
     <Button
@@ -69,7 +70,8 @@
         android:layout_gravity=""
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modelTop" />
+        app:layout_constraintTop_toBottomOf="@+id/modelTop"
+        android:popupBackground="@android:color/black"/>
 
 
     <Button
