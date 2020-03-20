@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/matteGray"
     android:clickable="true"
     tools:context=".BlankFragment">
 
@@ -18,14 +18,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:id="@+id/priceInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="20sp" />
 
         <TextView
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/white"/>
 
         <ImageView
             android:id="@+id/vehiclePicture"
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/white"/>
 
 
     </LinearLayout>
