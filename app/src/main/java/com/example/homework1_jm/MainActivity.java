@@ -16,6 +16,10 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Jouse Rodriguez   Homework Assignment 2
+    //Marcos Rodriguez
+
+
 
     private EditText username; //Added private buttons
     private EditText password; //that will be placeholders

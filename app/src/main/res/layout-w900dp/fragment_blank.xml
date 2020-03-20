@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/matteGray"
+    android:clickable="true"
+    tools:context=".BlankFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/makeModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="450dp"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/priceInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text=""
+            android:layout_marginLeft="450dp"
+            android:textColor="@android:color/white"
+            android:textSize="45sp" />
+
+        <TextViev
+            android:id="@+id/vehicleInfo"
+            android:layout_marginTop="90dp"
+            android:text="INFO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:layout_marginLeft="450dp"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            android:id="@+id/vehiclePicture"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/lastUpdateInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:layout_marginLeft="300dp"
+            android:text=""
+            android:textColor="@android:color/white"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
