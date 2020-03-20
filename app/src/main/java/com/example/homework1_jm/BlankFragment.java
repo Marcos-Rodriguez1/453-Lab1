@@ -85,6 +85,8 @@ public class BlankFragment extends Fragment {
         image = view.findViewById(R.id.vehiclePicture);
         update = view.findViewById(R.id.lastUpdateInfo);
         makeAndModelDisplay = view.findViewById(R.id.makeModel);
+
+
         new GetInfo().execute();
 
         return view;
