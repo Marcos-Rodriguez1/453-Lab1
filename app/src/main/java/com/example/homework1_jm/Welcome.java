@@ -86,8 +86,8 @@ public class Welcome extends AppCompatActivity {
         spinner2=(Spinner) findViewById(R.id.spin2);
         mButton=(Button)findViewById(R.id.button);
         mButton2=(Button)findViewById(R.id.button2);
-        test=(TextView)findViewById(R.id.test);
-        test2=(TextView)findViewById(R.id.test2);
+        //test=(TextView)findViewById(R.id.test);
+       // test2=(TextView)findViewById(R.id.test2);
         idmodel=(TextView)findViewById(R.id.idmodel);
         lv = findViewById(R.id.list);
 

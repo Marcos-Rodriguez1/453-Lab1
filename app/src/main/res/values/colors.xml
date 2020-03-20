@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="bloodRed">#800B00</color>
+    <color name="fadedRed">#FF5B4D</color>
+    <color name="brightRed">#FF1500</color>
+    <color name="matteGray">#877B7A</color>
+    <color name="matteRed">#CC1000</color>
+
 </resources>

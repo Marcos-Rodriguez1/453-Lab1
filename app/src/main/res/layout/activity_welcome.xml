@@ -4,64 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/matteGray"
     tools:context=".Welcome">
+
+
+    <TextView
+        android:id="@+id/makeTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bloodRed"
+        android:gravity="center"
+        android:text="Make"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Spinner
         android:id="@+id/spin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/makeTop" />
 
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:text=""
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="116dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/matteRed"
+        android:stateListAnimator="@null"
+        android:text="confirm Make"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/modelTop"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="confirm"
+        android:layout_marginTop="10dp"
+        android:background="@color/bloodRed"
+        android:gravity="center"
+        android:text="Model"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test"
-        android:stateListAnimator="@null"/>
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 
     <Spinner
         android:id="@+id/spin2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity=""
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/modelTop" />
 
-    <TextView
-        android:id="@+id/test2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="116dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/matteRed"
+        android:stateListAnimator="@null"
+        android:text="confirm model"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin2" />
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="confirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test2"
-        android:stateListAnimator="@null"/>
-
 
 
     <ListView
@@ -75,7 +97,7 @@
     <FrameLayout
         android:id="@+id/fragment_carInfo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
