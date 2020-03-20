@@ -146,7 +146,6 @@ public class Welcome extends AppCompatActivity {
                String value = lv.getItemAtPosition(i).toString();
                value = value.replaceAll("[^-?0-9]+", "");
 
-               Toast.makeText(getApplication(), value, Toast.LENGTH_LONG).show();
 
                String temp = urldetails + value; //Give the final url
 
